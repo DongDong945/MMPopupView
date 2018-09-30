@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "MMPopupView"
   s.version      = "1.7.3"
-  s.summary      = "Pop-up based view(e.g. AlertView SheetView), or you can easily customize for your own usage."
+  s.summary      = "基于MMPopupView的一个优化版本，感谢MMPopupView的作者."
   s.homepage     = "https://github.com/dongdong945/MMPopupView"
   s.license      = { :type => 'MIT License', :file => 'LICENSE' }
   s.author       = { "DongDong" => "geekdream@126.com" }
