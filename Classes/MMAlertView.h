@@ -39,12 +39,12 @@ typedef void(^MMPopupInputHandler)(NSString *text);
 
 @property (nonatomic, assign) CGFloat width;                // Default is 275.
 @property (nonatomic, assign) CGFloat buttonHeight;         // Default is 50.
-@property (nonatomic, assign) CGFloat innerMargin;          // Default is 25.
+@property (nonatomic, assign) UIEdgeInsets innerInsets;     // Default is (25, 25, 25, 25).
 @property (nonatomic, assign) CGFloat cornerRadius;         // Default is 5.
 
-@property (nonatomic, assign) CGFloat titleFontSize;        // Default is 18.
-@property (nonatomic, assign) CGFloat detailFontSize;       // Default is 14.
-@property (nonatomic, assign) CGFloat buttonFontSize;       // Default is 17.
+@property (nonatomic, strong) UIFont *titleFont;            // Default is systemFont 18.
+@property (nonatomic, strong) UIFont *detailFont;           // Default is systemFont 14.
+@property (nonatomic, strong) UIFont *buttonFont;           // Default is systemFont 17.
 
 @property (nonatomic, strong) UIColor *backgroundColor;     // Default is #FFFFFF.
 @property (nonatomic, strong) UIColor *titleColor;          // Default is #333333.

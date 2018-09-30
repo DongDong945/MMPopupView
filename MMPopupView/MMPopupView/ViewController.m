@@ -69,7 +69,7 @@ UITableViewDataSource
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text = @[@"Alert - Default", @"Alert - Confirm", @"Alert - Input", @"Sheet - Default", @"Custom - PinView", @"Custom - DateView"][indexPath.row];
+    cell.textLabel.text = @[@"Alert - Default", @"Alert - Confirm", @"Alert - Input", @"Sheet - Default", @"Custom - PinView", @"Custom - DateView", @"my"][indexPath.row];
     cell.textLabel.textColor = [UIColor redColor];
     
     return cell;
@@ -85,7 +85,7 @@ UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -174,6 +174,20 @@ UITableViewDataSource
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MMDateView hideAll];
             });
+            
+            break;
+        }
+            
+        case 6: {
+            
+            MMAlertViewConfig *config = [MMAlertViewConfig globalConfig];
+            config.detailFont = [UIFont systemFontOfSize:15];
+            config.innerInsets = UIEdgeInsetsMake(25, 35, 12.33, 35);
+            
+            MMPopupItem *item1 = MMItemMake(@"取消充电", MMItemTypeNormal, nil);
+            MMPopupItem *item2 = MMItemMake(@"继续充电", MMItemTypeHighlight, nil);
+            MMAlertView *alert = [[MMAlertView alloc] initWithTitle:nil detail:@"您的企业账户余额小于充电余额！请提醒管理员充值！联系管理员：13000000001" items:@[item1, item2]];
+            [alert show];
             
             break;
         }

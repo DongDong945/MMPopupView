@@ -98,12 +98,12 @@
             self.titleLabel = [UILabel new];
             [self addSubview:self.titleLabel];
             [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(lastAttribute).offset(config.innerMargin);
-                make.left.right.equalTo(self).insets(UIEdgeInsetsMake(0, config.innerMargin, 0, config.innerMargin));
+                make.top.equalTo(lastAttribute).offset(config.innerInsets.top);
+                make.left.right.equalTo(self).insets(UIEdgeInsetsMake(0, config.innerInsets.left, 0, config.innerInsets.right));
             }];
             self.titleLabel.textColor = config.titleColor;
             self.titleLabel.textAlignment = NSTextAlignmentCenter;
-            self.titleLabel.font = [UIFont boldSystemFontOfSize:config.titleFontSize];
+            self.titleLabel.font = config.titleFont;
             self.titleLabel.numberOfLines = 0;
             self.titleLabel.backgroundColor = self.backgroundColor;
             self.titleLabel.text = title;
@@ -116,12 +116,16 @@
             self.detailLabel = [UILabel new];
             [self addSubview:self.detailLabel];
             [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(lastAttribute).offset(5);
-                make.left.right.equalTo(self).insets(UIEdgeInsetsMake(0, config.innerMargin, 0, config.innerMargin));
+                if (self.titleLabel) {
+                    make.top.equalTo(lastAttribute).offset(5);
+                } else {
+                    make.top.equalTo(lastAttribute).offset(config.innerInsets.top);
+                }
+                make.left.right.equalTo(self).insets(config.innerInsets);
             }];
             self.detailLabel.textColor = config.detailColor;
             self.detailLabel.textAlignment = NSTextAlignmentCenter;
-            self.detailLabel.font = [UIFont systemFontOfSize:config.detailFontSize];
+            self.detailLabel.font = config.detailFont;
             self.detailLabel.numberOfLines = 0;
             self.detailLabel.backgroundColor = self.backgroundColor;
             self.detailLabel.text = detail;
@@ -135,7 +139,7 @@
             [self addSubview:self.inputView];
             [self.inputView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(lastAttribute).offset(10);
-                make.left.right.equalTo(self).insets(UIEdgeInsetsMake(0, config.innerMargin, 0, config.innerMargin));
+                make.left.right.equalTo(self).insets(UIEdgeInsetsMake(0, config.innerInsets.left, 0, config.innerInsets.right));
                 make.height.mas_equalTo(40);
             }];
             self.inputView.backgroundColor = self.backgroundColor;
@@ -152,7 +156,7 @@
         self.buttonView = [UIView new];
         [self addSubview:self.buttonView];
         [self.buttonView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(lastAttribute).offset(config.innerMargin);
+            make.top.equalTo(lastAttribute).offset(config.innerInsets.bottom);
             make.left.right.equalTo(self);
         }];
         
@@ -209,7 +213,7 @@
             [btn setTitleColor:item.highlight?config.itemHighlightColor:config.itemNormalColor forState:UIControlStateNormal];
             btn.layer.borderWidth = MM_SPLIT_WIDTH;
             btn.layer.borderColor = config.splitColor.CGColor;
-            btn.titleLabel.font = (item==items.lastObject)?[UIFont boldSystemFontOfSize:config.buttonFontSize]:[UIFont systemFontOfSize:config.buttonFontSize];
+            btn.titleLabel.font = config.buttonFont;
         }
         [lastButton mas_updateConstraints:^(MASConstraintMaker *make) {
             
@@ -344,12 +348,12 @@
     {
         self.width          = 275.0f;
         self.buttonHeight   = 50.0f;
-        self.innerMargin    = 25.0f;
+        self.innerInsets    = UIEdgeInsetsMake(25.0f, 25.0f, 25.0f, 25.0f);
         self.cornerRadius   = 5.0f;
 
-        self.titleFontSize  = 18.0f;
-        self.detailFontSize = 14.0f;
-        self.buttonFontSize = 17.0f;
+        self.titleFont = [UIFont systemFontOfSize:18.0f];
+        self.detailFont = [UIFont systemFontOfSize:14.0f];
+        self.buttonFont = [UIFont systemFontOfSize:17.0f];
         
         self.backgroundColor    = MMHexColor(0xFFFFFFFF);
         self.titleColor         = MMHexColor(0x333333FF);
