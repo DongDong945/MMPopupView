@@ -38,6 +38,7 @@ typedef void(^MMPopupInputHandler)(NSString *text);
 + (MMAlertViewConfig*) globalConfig;
 
 @property (nonatomic, assign) CGFloat width;                // Default is 275.
+@property (nonatomic, assign) CGFloat height;               // Default is 146
 @property (nonatomic, assign) CGFloat buttonHeight;         // Default is 50.
 @property (nonatomic, assign) UIEdgeInsets innerInsets;     // Default is (25, 25, 25, 25).
 @property (nonatomic, assign) CGFloat cornerRadius;         // Default is 5.

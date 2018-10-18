@@ -88,6 +88,7 @@
         
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(config.width);
+            make.height.mas_equalTo(config.height).priorityLow();
         }];
         [self setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         [self setContentHuggingPriority:UILayoutPriorityFittingSizeLevel forAxis:UILayoutConstraintAxisVertical];
@@ -347,6 +348,7 @@
     if ( self )
     {
         self.width          = 275.0f;
+        self.height         = 146.0f;
         self.buttonHeight   = 50.0f;
         self.innerInsets    = UIEdgeInsetsMake(25.0f, 25.0f, 25.0f, 25.0f);
         self.cornerRadius   = 5.0f;
