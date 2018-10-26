@@ -14,6 +14,7 @@ typedef void(^MMPopupInputHandler)(NSString *text);
 @interface MMAlertView : MMPopupView
 
 @property (nonatomic, assign) NSUInteger maxInputLength;    // default is 0. Means no length limit.
+@property (nonatomic, assign) NSTextAlignment detailTextAlignment;  // default is NSTextAlignmentLeft.
 
 - (instancetype) initWithInputTitle:(NSString*)title
                              detail:(NSString*)detail

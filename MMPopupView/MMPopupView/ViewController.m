@@ -186,7 +186,8 @@ UITableViewDataSource
             
             MMPopupItem *item1 = MMItemMake(@"取消充电", MMItemTypeNormal, nil);
             MMPopupItem *item2 = MMItemMake(@"继续充电", MMItemTypeHighlight, nil);
-            MMAlertView *alert = [[MMAlertView alloc] initWithTitle:nil detail:@"13000000001" items:@[item1, item2]];
+            MMAlertView *alert = [[MMAlertView alloc] initWithTitle:nil detail:@"四川省成都市武侯区桂溪街道天府大道中段辅路998号桂溪生态公园(装修中)" items:@[item1, item2]];
+            alert.detailTextAlignment = NSTextAlignmentCenter;
             [alert show];
             
             break;
@@ -200,7 +201,7 @@ UITableViewDataSource
             
             MMPopupItem *item1 = MMItemMake(@"取消充电", MMItemTypeNormal, nil);
             MMPopupItem *item2 = MMItemMake(@"继续充电", MMItemTypeHighlight, nil);
-            MMAlertView *alert = [[MMAlertView alloc] initWithTitle:@"这里是标题" detail:@"移动充值请拨打电话13800138000" items:@[item1, item2]];
+            MMAlertView *alert = [[MMAlertView alloc] initWithTitle:@"这里是标题" detail:@"四川省成都市武侯区桂溪街道天府大道中段辅路998号桂溪生态公园(装修中)" items:@[item1, item2]];
             [alert show];
             
             break;

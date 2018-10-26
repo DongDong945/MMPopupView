@@ -72,6 +72,8 @@
     {
         NSAssert(items.count>0, @"Could not find any items.");
         
+        self.detailTextAlignment = NSTextAlignmentLeft;
+        
         MMAlertViewConfig *config = [MMAlertViewConfig globalConfig];
         
         self.type = MMPopupTypeAlert;
@@ -122,10 +124,12 @@
                 } else {
                     make.top.equalTo(lastAttribute).offset(config.innerInsets.top);
                 }
-                make.left.right.equalTo(self).insets(config.innerInsets);
+                make.centerX.equalTo(self);
+                make.left.greaterThanOrEqualTo(self).with.offset(config.innerInsets.left);
+                make.right.lessThanOrEqualTo(self).with.offset(-config.innerInsets.right);
             }];
             self.detailLabel.textColor = config.detailColor;
-            self.detailLabel.textAlignment = NSTextAlignmentCenter;
+            self.detailLabel.textAlignment = self.detailTextAlignment;
             self.detailLabel.font = config.detailFont;
             self.detailLabel.numberOfLines = 0;
             self.detailLabel.backgroundColor = self.backgroundColor;
@@ -240,6 +244,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyTextChange:) name:UITextFieldTextDidChangeNotification object:nil];
     
     return self;
+}
+
+- (void)setDetailTextAlignment:(NSTextAlignment)detailTextAlignment {
+    _detailTextAlignment = detailTextAlignment;
+    self.detailLabel.textAlignment = detailTextAlignment;
 }
 
 - (void)dealloc
