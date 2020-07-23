@@ -104,6 +104,10 @@ static NSString * const MMPopupViewHideAllNotification = @"MMPopupViewHideAllNot
 
 - (void)show
 {
+    // 避免被覆盖
+    if (self.attachedView.mm_dimBackgroundView.subviews.count)
+        return;
+    
     [self showWithBlock:nil];
 }
 
